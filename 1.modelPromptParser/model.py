@@ -8,7 +8,7 @@ _ = load_dotenv(find_dotenv())
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-
+#Note: This is normal AI call
 llm_model = "gpt-3.5-turbo"
 
 # NOTE: get completion
@@ -19,6 +19,8 @@ def get_completion(prompt, model=llm_model, temperature=0):
         messages=messages,
         temperature=temperature
     )
+    print (response)
+    print (response.choices)
     return response.choices[0].message.content
 
 

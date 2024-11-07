@@ -51,14 +51,23 @@ sentiment
 """
 
 prompt_template=ChatPromptTemplate.from_template(template_string)
-
+# print(prompt_template)
+# print("****************************************************************")
+# print(prompt_template.messages)
+# print("****************************************************************")
+# print(prompt_template.messages[0].prompt)
+# print("****************************************************************")
+# print(prompt_template.messages[0].prompt.input_variables)
+# print("****************************************************************")
 messages=prompt_template.format_messages(text=customer_review)
 
 response=chat.invoke(messages)
+print(response)
+print("****************************************************************")
 print(response.content)
 
 #NOTE: Prompt Template With Output Parsers 
-
+print(ok)
 
 template_string = """\
 For the following text, extract the following information:
