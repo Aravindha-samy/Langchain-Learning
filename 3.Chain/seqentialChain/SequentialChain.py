@@ -8,7 +8,22 @@ _=load_dotenv(find_dotenv())
 
 llm=ChatOpenAI(temperature=0.7,api_key=os.getenv("OPENAI_API_KEY"))
 
+"""
 
+Create a Template
+Create a Chains  LLM 
+    1.Add the llm
+    2.Add the prompt="Write the template or Choose the template" 
+    (If needs the output )
+    3.Store the Output using a Output key and this key will be used as a input to the another template
+
+Create a Sequential Chain 
+    1.add all the LLm chains
+    2.insert the input variables
+    2. Add the output_keys
+Finally Invoke the Sequential Chain with the inputs 
+
+"""
 prompt_template_1=PromptTemplate.from_template(
     "Translate the following text to American English: {text}"
 )

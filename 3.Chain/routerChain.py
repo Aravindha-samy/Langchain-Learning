@@ -10,6 +10,23 @@ _=load_dotenv(find_dotenv())
 
 llm=ChatOpenAI(temperature=0,model="gpt-3.5-turbo",openai_api_key=os.getenv("OPENAI_API_KEY"))
 
+
+"""
+Define the What are the prompt_template you needs 
+Define the prompt_infos about the defined prompt_template with the name , description, template
+create the chains for each template and store it in the destination chains with the {name:chain}
+Create the destinations with the {name:description}
+Create the destination string with the join of all the destinations
+
+Create a default chain for if any of the chain not matching the default chain is used.
+create a multi router template
+format the template with the input variables
+Create the prompt_template using the multi-router template with the input variables , output parser
+Create the router chain using the multi-router template and llm
+
+create the MultiPromptChain using the router chain and destination chains and the default chain 
+And finally invoke the MultiPromptChain with the input variables
+"""
 physics_template = """You are a very smart physics professor. \
 You are great at answering questions about physics in a concise\
 and easy to understand manner. \
@@ -42,7 +59,7 @@ Here is a question:
 {input}"""
 
 
-computerscience_template = """ You are a successful computer scientist.\
+computer_science_template = """ You are a successful computer scientist.\
 You have a passion for creativity, collaboration,\
 forward-thinking, confidence, strong problem-solving capabilities,\
 understanding of theories and algorithms, and excellent communication \
@@ -75,7 +92,7 @@ prompt_infos = [
     {
         "name": "computer science", 
         "description": "Good for answering computer science questions", 
-        "prompt_template": computerscience_template
+        "prompt_template": computer_science_template
     }
 ]
 
