@@ -12,6 +12,7 @@ chat=ChatOpenAI(temperature=0,api_key=os.getenv("OPENAI_API_KEY"),model="gpt-3.5
 
 memory=ConversationBufferMemory()
 
+memory.save_context({"input":"Hello"},{"output":"What's up?"})
 conversation=ConversationChain(llm=chat,memory=memory,verbose=True)
 
 print("Enter 'exit' to quit")
@@ -22,7 +23,6 @@ while True:
     response=conversation.predict(input=user_input)
     print(response)
 
-memory.save_context({"input":"Hello"},{"output":"What's up?"})
 
 
 print(memory.buffer)
